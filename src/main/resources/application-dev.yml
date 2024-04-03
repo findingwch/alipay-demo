@@ -1,0 +1,65 @@
+info:
+  ip: 127.0.0.1
+
+spring:
+  application:
+    name: alipay-demo-${spring.profiles.active}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: password
+    url: jdbc:mysql://${info.ip}:3306/payment-demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+
+
+rocketmq:
+  name-server: ${info.ip}:9876
+  consumer:
+    group: springboot_consumer_group
+    # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值
+    pull-batch-size: 10
+    access-key: adminadmin
+    secret-key: 12345678
+  producer:
+    # 发送同一类消息的设置为同一个group，保证唯一
+    group: springboot_producer_group
+    # 发送消息超时时间，默认3000
+    sendMessageTimeout: 10000
+    # 发送消息失败重试次数，默认2
+    retryTimesWhenSendFailed: 2
+    # 异步消息重试此处，默认2
+    retryTimesWhenSendAsyncFailed: 2
+    # 消息最大长度，默认1024 * 1024 * 4(默认4M)
+    maxMessageSize: 4096
+    # 压缩消息阈值，默认4k(1024 * 4)
+    compressMessageBodyThreshold: 4096
+    # 是否在内部发送失败时重试另一个broker，默认false
+    retryNextServer: false
+    access-key: adminadmin
+    secret-key: 12345678
+
+
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+#      开启日志
+logging:
+  level:
+    com.example.alipaydemo: debug
+
+#支付宝支付配置
+alipay:
+  URL: http://91c3-175-0-83-155.ngrok.io
+  app_id: 2021000117671453
+  #沙箱私钥
+  merchant_private_key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCOaiX8x3VXTW9m0/pKhDsRMUMyHbCXsjDyiuuJnNgJjDLoKOOcb+0yvAZOScCPeVfmohEw9wpovWcCRWHRP4Dklgaj79RxHOJeU0fDmNMVyYgeDhicCZsn6yW6FZSNY6M/vroQywV6bf7g+HBwQrqHR1fW0QYfyOOyDN/mF/zit7/fzZh6re749m4GAUsOMVi3gDsMjCUk8wroAMcyBLOTW8O3uMR17xr2nN9XIAOcvy6DROoZdVa/nLhspSjNDVeBcSKA4R5tG+EC4V6ou9NDugl/4VQTsI93eIAFdiEUN310CeRzOqNY8nYDm+85W060A4MJeHIkjD6zxbN2+KE1AgMBAAECggEAbluhPkXODy3pUtSXEuFu6D61ZIOPUa36siimpwfMfXGQDUmKP7KYK4V6mXYbatLMI+OY0MnO3iVPSno7d6vvFLORR75UcKbCX/fHF7I4eJyoBypDNb9X5VIZ9R499GaunXoNs2+vuhS8utaqQsPiyWumjMeDKGRC1bmWUzZpd8FmSbMK2mR5JKyeLc0c86rY9gIG1jNs0HBJdKRpYRGQYTfE2BWRuKSO0Sl60TBiiE0xdfq/Lj5XYwjvTvuucl3niOgP079r7C188+FLEgWmAkMfaCT7ioRVvouj+GViKTrVyW0H1kHsLg1ZbPsYd5ajbXm8tgoFGpna9lBr6Y48jQKBgQDCvQ7tBLK0qGi4py0pAc3Kz/GPr4yC5baAXNHKFPoxvC7KLgbQonBb2W292pLvTBGFdjlWaskliaUS9YCYjwBjyOSRRks48P8ln9H/9jvyr9e2BekWHSVnzswWS2eHPypND9rQa9On9D4jqAxltaEyP5IeL0YMhGaL6HdVrZzYMwKBgQC7N0ZJRyKQXxez5Xk6NyLphyQPoT2KXTbGZOdojpJQ1FEXmi/Nsi8HMIodBaGU+Xzue52LUc/1f/xXuxGFnv1UtoedDPWfvdPtG64kX3kTtSIHcZ689wh9UFIHHgkfrIxZgiClGnaFUQHP+q7O8u2Eiv/9I0aKHkZYYBw+c+PY9wKBgQC8hzmm/vBfc9cGRVq0I3nvCgeremGG7AsWFEZJ5KsfcTa/J3YTj99FHKdgsPWlU7h2w7DY18LqY2p7g0++4lqXQAsAFdSHSNFKxIIS0njRB6nHH8u7S/ZFnG/6eX+98MnsFxhYxLsBE7UA4hU2dnObaO316QBg5+E7O5AkU1LP/wKBgEHok7X4dRKeZ5nNj4APKRtNmERoX2H2rvHpVA5bIueR13qXrXyc3jGJxRWyhdAMhQ7wNeZ2RuAGzq+UC/ceodDQ8a04gsBZ8+HlfMkRU268td4pAdlEnph/TmFzEYM1G7PnO9bkGhWVDy5I8oGoxDWFOdnEMXEud1VlgIv8AJrBAoGANNL4vX3fBD/rRMhWo6jLfUFeXoLIO0cXcG3wIrfzc8V4LgRWx3jcOtUbwpzCN6JEOPQ3PNOWy7ZeYKxib8ismQIV5nQVDf6B/lr8TlktGwJ3+gWmlofqTzLKPEgCEQ1SqbkThy0rS1vGbMCHTDHULWgF0bTXRQNr5c91HTjgUr4=
+  #支付宝公钥
+  alipay-public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlUcn9e8Z/jWf1qnwEQKZ1/zKxClxk45z+wbPWLX8Ntk08dH5aofrXhD9U8nViMiylJgTB6YW2EGRzsY6awRLBpNMEMGwNBf6LxDq2rZUraPoxz3AxmI1/6qbQpzHW6B4iTY+bRH602gut7KhaP77EMWiI0BzjOqbVzijgqpuvXin6wUnh22+R2MErmBMIWh16Jf5ppcm+fbSY/IptjfaO8v4cxrW9UHNAnCvi789IBjBsbE+34N13RrEAMYfLoqggFCUf3RUxQbjcDqERdf//lyqrYPeVyrY/Uv1ie+FA4NIOb/uKN/4N7POfIPBc4P24RiDs6ENlNDmpkYQdvnriQIDAQAB
+  gateway-url: https://openapi.alipaydev.com/gateway.do
+  #服务器异步通知页面路径  需http://格式  的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
+  notify_url: ${alipay.URL}/payed/notify
+  return-url: http://member.gulimall.com/memberOrder.html
+  sign-type: RSA2
+  charset: UTF-8

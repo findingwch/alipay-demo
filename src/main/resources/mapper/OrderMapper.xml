@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.alipaydemo.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.example.alipaydemo.entity.Order">
+    <!--@mbg.generated-->
+    <!--@Table `order`-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="order_sn" jdbcType="CHAR" property="orderSn" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="pay_amount" jdbcType="DECIMAL" property="payAmount" />
+    <result column="freight_amount" jdbcType="DECIMAL" property="freightAmount" />
+    <result column="pay_type" jdbcType="TINYINT" property="payType" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="detail_address" jdbcType="VARCHAR" property="detailAddress" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="confirm_status" jdbcType="TINYINT" property="confirmStatus" />
+    <result column="delete_status" jdbcType="TINYINT" property="deleteStatus" />
+    <result column="payment_time" jdbcType="TIMESTAMP" property="paymentTime" />
+    <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
+    <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime" />
+    <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, order_sn, user_name, total_amount, pay_amount, freight_amount,
+    pay_type, `status`, detail_address, note, confirm_status, delete_status, payment_time, 
+    delivery_time, receive_time, comment_time, create_time, modify_time
+  </sql>
+</mapper>

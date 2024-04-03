@@ -1,0 +1,374 @@
+= 测试
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Version |  Update Time  | Status | Author |  Description
+|v2024-04-03 11:16:14|2024-04-03 11:16:14|auto|@finding|Created by smart-doc
+|====================
+
+
+== default
+=== 订单支付成功监听器
+==== 支付宝异步通知
+*URL:* `http://{{host}}:{{port}}/payed/notify`
+
+*Type:* `POST`
+
+*Author:* Finding
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=UTF-8`
+
+
+
+*Query-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Required|Description|Since
+|gmt_create|string|false|No comments found.|-
+|charset|string|false|No comments found.|-
+|gmt_payment|string|false|No comments found.|-
+|notify_time|string|false|No comments found.|-
+|subject|string|false|No comments found.|-
+|sign|string|false|No comments found.|-
+|buyer_id|string|false|No comments found.|-
+|body|string|false|No comments found.|-
+|invoice_amount|string|false|No comments found.|-
+|version|string|false|No comments found.|-
+|notify_id|string|false|No comments found.|-
+|fund_bill_list|string|false|No comments found.|-
+|notify_type|string|false|No comments found.|-
+|out_trade_no|string|false|No comments found.|-
+|total_amount|string|false|No comments found.|-
+|trade_status|string|false|No comments found.|-
+|trade_no|string|false|No comments found.|-
+|auth_app_id|string|false|No comments found.|-
+|receipt_amount|string|false|No comments found.|-
+|point_amount|string|false|No comments found.|-
+|app_id|string|false|No comments found.|-
+|buyer_pay_amount|string|false|No comments found.|-
+|sign_type|string|false|No comments found.|-
+|seller_id|string|false|No comments found.|-
+|====================
+
+
+*Request-example:*
+----
+curl -X POST -i http://{{host}}:{{port}}/payed/notify
+----
+
+*Response-example:*
+----
+string
+----
+
+=== 订单控制器
+==== 创建订单
+*URL:* `http://{{host}}:{{port}}/order/{goodsId}/{num}`
+
+*Type:* `POST`
+
+*Author:* Finding
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=UTF-8`
+
+
+*Path-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Required|Description|Since
+|goodsId|int32|true|商品编号|-
+|num|int32|true|    数量|-
+|====================
+
+
+
+*Request-example:*
+----
+curl -X POST -i http://{{host}}:{{port}}/order/{goodsId}/{num}
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|code|string|No comments found.|-
+|message|string|No comments found.|-
+|data|object|No comments found.|-
+|====================
+
+*Response-example:*
+----
+{
+  "code": "",
+  "message": "",
+  "data": {}
+}
+----
+
+==== 获取订单列表
+*URL:* `http://{{host}}:{{port}}/order/list`
+
+*Type:* `GET`
+
+*Author:* Finding
+
+*Content-Type:* `application/json`
+
+
+
+*Query-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Required|Description|Since
+|pageNum|int64|false| 页码|-
+|pageSize|int64|false|页面大小|-
+|====================
+
+*Body-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Required|Description|Since
+|id|int64|false|id|-
+|userId|int64|false|user_id|-
+|orderSn|string|false|订单号|-
+|userName|string|false|用户名|-
+|totalAmount|number|false|订单总额|-
+|payAmount|number|false|应付总额|-
+|freightAmount|number|false|运费金额|-
+|payType|int32|false|支付方式【1->支付宝；2->微信；3->银联； 4->货到付款；】|-
+|status|int32|false|订单状态【0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单】|-
+|detailAddress|string|false|详细地址|-
+|note|string|false|订单备注|-
+|confirmStatus|int32|false|确认收货状态[0->未确认；1->已确认]|-
+|deleteStatus|int32|false|删除状态【0->未删除；1->已删除】|-
+|paymentTime|string|false|支付时间|-
+|deliveryTime|string|false|发货时间|-
+|receiveTime|string|false|确认收货时间|-
+|commentTime|string|false|评价时间|-
+|createTime|string|false|create_time|-
+|modifyTime|string|false|修改时间|-
+|====================
+
+*Request-example:*
+----
+curl -X GET -H 'Content-Type: application/json' -i http://{{host}}:{{port}}/order/list?pageNum=0&pageSize=0 --data '{
+  "id": 0,
+  "userId": 0,
+  "orderSn": "",
+  "userName": "",
+  "totalAmount": 0,
+  "payAmount": 0,
+  "freightAmount": 0,
+  "payType": 0,
+  "status": 0,
+  "detailAddress": "",
+  "note": "",
+  "confirmStatus": 0,
+  "deleteStatus": 0,
+  "paymentTime": "yyyy-MM-dd HH:mm:ss",
+  "deliveryTime": "yyyy-MM-dd HH:mm:ss",
+  "receiveTime": "yyyy-MM-dd HH:mm:ss",
+  "commentTime": "yyyy-MM-dd HH:mm:ss",
+  "createTime": "yyyy-MM-dd HH:mm:ss",
+  "modifyTime": "yyyy-MM-dd HH:mm:ss"
+}'
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|code|string|No comments found.|-
+|message|string|No comments found.|-
+|data|object|No comments found.|-
+|====================
+
+*Response-example:*
+----
+{
+  "code": "",
+  "message": "",
+  "data": {}
+}
+----
+
+==== 支付宝退款接口
+*URL:* `http://{{host}}:{{port}}/order/alipay/return`
+
+*Type:* `GET`
+
+*Author:* Finding
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=UTF-8`
+
+
+
+*Query-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Required|Description|Since
+|orderSn|string|true|订购 SN|-
+|====================
+
+
+*Request-example:*
+----
+curl -X GET -i http://{{host}}:{{port}}/order/alipay/return?orderSn=
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|code|string|No comments found.|-
+|message|string|No comments found.|-
+|data|object|No comments found.|-
+|====================
+
+*Response-example:*
+----
+{
+  "code": "",
+  "message": "",
+  "data": {}
+}
+----
+
+=== 
+==== 
+*URL:* `http://{{host}}:{{port}}/rocketmq/send`
+
+*Type:* `GET`
+
+*Author:* finding
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=UTF-8`
+
+
+
+
+
+*Request-example:*
+----
+curl -X GET -i http://{{host}}:{{port}}/rocketmq/send
+----
+
+*Response-example:*
+----
+Return void.
+----
+
+==== 
+*URL:* `http://{{host}}:{{port}}/rocketmq/sendTag`
+
+*Type:* `GET`
+
+*Author:* finding
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=UTF-8`
+
+
+
+
+
+*Request-example:*
+----
+curl -X GET -i http://{{host}}:{{port}}/rocketmq/sendTag
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|code|string|No comments found.|-
+|message|string|No comments found.|-
+|data|object|No comments found.|-
+|└─sendStatus|enum|No comments found.<br/>[Enum values:<br/>SEND_OK(null)<br/>FLUSH_DISK_TIMEOUT(null)<br/>FLUSH_SLAVE_TIMEOUT(null)<br/>SLAVE_NOT_AVAILABLE(null)<br/>]|-
+|└─msgId|string|No comments found.|-
+|└─messageQueue|object|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─topic|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─brokerName|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─queueId|int32|No comments found.|-
+|└─queueOffset|int64|No comments found.|-
+|└─transactionId|string|No comments found.|-
+|└─offsetMsgId|string|No comments found.|-
+|└─regionId|string|No comments found.|-
+|└─traceOn|boolean|No comments found.|-
+|====================
+
+*Response-example:*
+----
+{
+  "code": "",
+  "message": "",
+  "data": {
+    "sendStatus": "SEND_OK",
+    "msgId": "",
+    "messageQueue": {
+      "topic": "",
+      "brokerName": "",
+      "queueId": 0
+    },
+    "queueOffset": 0,
+    "transactionId": "",
+    "offsetMsgId": "",
+    "regionId": "",
+    "traceOn": true
+  }
+}
+----
+
+== 分组
+== 沙箱支付接口
+=== 支付宝支付controller接口
+==== 支付接口：
+用户下单：支付宝支付
+1、让支付页让浏览器展示
+2、支付成功以后，跳转到用户的订单列表
+produces:设置返回类型这里直接使用html格式支付宝的pay方法就是返回一个页面给我们使用
+*URL:* `http://{{host}}:{{port}}/aliPayOrder`
+
+*Type:* `GET`
+
+*Author:* Finding
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=UTF-8`
+
+
+
+*Query-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Required|Description|Since
+|orderSn|string|true|订单号|-
+|====================
+
+
+*Request-example:*
+----
+curl -X GET -i http://{{host}}:{{port}}/aliPayOrder?orderSn=
+----
+
+*Response-example:*
+----
+string
+----
+
+

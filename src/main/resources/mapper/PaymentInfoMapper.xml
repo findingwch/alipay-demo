@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.alipaydemo.mapper.PaymentInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.alipaydemo.entity.PaymentInfo">
+    <!--@mbg.generated-->
+    <!--@Table payment_info-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_sn" jdbcType="CHAR" property="orderSn" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="alipay_trade_no" jdbcType="VARCHAR" property="alipayTradeNo" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="payment_status" jdbcType="VARCHAR" property="paymentStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="confirm_time" jdbcType="TIMESTAMP" property="confirmTime" />
+    <result column="callback_content" jdbcType="VARCHAR" property="callbackContent" />
+    <result column="callback_time" jdbcType="TIMESTAMP" property="callbackTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, order_sn, order_id, alipay_trade_no, total_amount, subject, payment_status, create_time, 
+    confirm_time, callback_content, callback_time
+  </sql>
+</mapper>

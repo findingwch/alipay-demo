@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.alipaydemo.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.example.alipaydemo.entity.Goods">
+    <!--@mbg.generated-->
+    <!--@Table goods-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="products_id" jdbcType="BIGINT" property="productsId" />
+    <result column="products_name" jdbcType="VARCHAR" property="productsName" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="store_num" jdbcType="BIGINT" property="storeNum" />
+    <result column="cover_img" jdbcType="VARCHAR" property="coverImg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, products_id, products_name, price, store_num, cover_img
+  </sql>
+</mapper>

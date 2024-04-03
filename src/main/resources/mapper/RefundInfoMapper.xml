@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.alipaydemo.mapper.RefundInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.alipaydemo.entity.RefundInfo">
+    <!--@mbg.generated-->
+    <!--@Table refund_info-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_return_id" jdbcType="BIGINT" property="orderReturnId" />
+    <result column="refund" jdbcType="DECIMAL" property="refund" />
+    <result column="refund_sn" jdbcType="VARCHAR" property="refundSn" />
+    <result column="refund_status" jdbcType="BOOLEAN" property="refundStatus" />
+    <result column="refund_channel" jdbcType="TINYINT" property="refundChannel" />
+    <result column="refund_content" jdbcType="VARCHAR" property="refundContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, order_return_id, refund, refund_sn, refund_status, refund_channel, refund_content
+  </sql>
+</mapper>
