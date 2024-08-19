@@ -1,5 +1,6 @@
 info:
   ip: 127.0.0.1
+  local_netwrok: http://ifyira.natappfree.cc
 
 spring:
   application:
@@ -9,6 +10,17 @@ spring:
     username: root
     password: password
     url: jdbc:mysql://${info.ip}:3306/payment-demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+
+
+
+wx:
+  pay:
+    appId: wx69b8c42072316a0a
+    mchId: 1673647810
+    apiV3Key: 6e672156f8d04fd8b13130cd5bec794e
+    privateCertPath: src/apiclient_cert.pem
+    privateKeyPath: src/apiclient_key.pem
+    notifyUrl: http://ifyira.natappfree.cc/feign/wxPay/native/notify
 
 
 rocketmq:
@@ -63,3 +75,5 @@ alipay:
   return-url: http://member.gulimall.com/memberOrder.html
   sign-type: RSA2
   charset: UTF-8
+
+

@@ -1,14 +1,8 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.example.alipaydemo.base.utils;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,8 +13,11 @@ import java.util.List;
  * @author finding
  * @date 2024/04/02
  */
+@Setter
+@Getter
 public class PageUtils implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -8265527656947577196L;
 	/**
 	 * 总记录数
 	 */
@@ -68,44 +65,4 @@ public class PageUtils implements Serializable {
 		this.totalPage = (int)page.getPages();
 	}
 
-	public int getTotalCount() {
-		return totalCount;
-	}
-
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
-	}
-
-	public int getPageSize() {
-		return pageSize;
-	}
-
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	public int getTotalPage() {
-		return totalPage;
-	}
-
-	public void setTotalPage(int totalPage) {
-		this.totalPage = totalPage;
-	}
-
-	public int getCurrPage() {
-		return currPage;
-	}
-
-	public void setCurrPage(int currPage) {
-		this.currPage = currPage;
-	}
-
-	public List<?> getList() {
-		return list;
-	}
-
-	public void setList(List<?> list) {
-		this.list = list;
-	}
-	
 }

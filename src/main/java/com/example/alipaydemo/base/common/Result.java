@@ -16,7 +16,7 @@ public class Result<T> {
 
     private String message;
 
-    private static final String SUCCESS = ResultEnum.SUCCESS.getCode();
+    private static final String successCode = ResultEnum.SUCCESS.getCode();
 
     private static final String PARAM_ERROR_CODE = ResultEnum.PARAM_ERROR.getCode();
 
@@ -27,31 +27,31 @@ public class Result<T> {
     private Result() {
     }
 
-    public static<T> Result<T> success() {
+    public static<T> Result<T> ok() {
         Result<T> result = new Result<>();
-        result.setCode(SUCCESS);
+        result.setCode(successCode);
         result.setMessage(ResultEnum.SUCCESS.getValue());
         return result;
     }
 
-    public static<T> Result<T> success(String message) {
+    public static<T> Result<T> ok(String message) {
         Result<T> result = new Result<>();
-        result.setCode(SUCCESS);
+        result.setCode(successCode);
         result.setMessage(message);
         return result;
     }
 
-    public static<T> Result<T> success(String message, T data) {
+    public static<T> Result<T> ok(String message, T data) {
         Result<T> result = new Result<>();
-        result.setCode(SUCCESS);
+        result.setCode(successCode);
         result.setMessage(message);
         result.setData(data);
         return result;
     }
 
-    public static<T> Result<T> success(T data) {
+    public static<T> Result<T> ok(T data) {
         Result<T> result = new Result<>();
-        result.setCode(SUCCESS);
+        result.setCode(successCode);
         result.setMessage("成功");
         result.setData(data);
         return result;

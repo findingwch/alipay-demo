@@ -32,7 +32,7 @@ services:
     ]
     environment:
       MYSQL_DATABASE: 'payment-demo'
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: passwordwget https://raw.githubusercontent.com/alibaba/canal/master/docker/run_admin.sh
 
 
     # 配置文件写在命令中无需往docker-container copy配置

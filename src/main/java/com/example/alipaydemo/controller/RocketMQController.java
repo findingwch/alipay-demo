@@ -53,7 +53,7 @@ public class RocketMQController {
     @GetMapping("/sendTag")
     public Result<SendResult> sendTag() {
         SendResult sendResult = mqProducerService.sendTagMsg("带有tag的字符消息");
-        return Result.success(sendResult);
+        return Result.ok(sendResult);
     }
 
 }

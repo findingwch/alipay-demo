@@ -78,9 +78,11 @@ public class AlipayTemplate {
                 app_id, merchant_private_key, "json",
                 charset, alipay_public_key, sign_type);
 
+
         //2、创建一个支付请求 //设置请求参数
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
-
+        alipayRequest.setReturnUrl(return_url);
+        alipayRequest.setNotifyUrl(notify_url);
         // 我的订单编号 商户订单号，商户网站订单系统中唯一订单号，必填
         String out_trade_no = vo.getOut_trade_no();
         //订单金额，必填

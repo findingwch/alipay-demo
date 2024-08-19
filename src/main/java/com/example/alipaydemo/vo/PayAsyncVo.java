@@ -19,6 +19,7 @@ public class PayAsyncVo {
      * 字符集
      */
     private String charset;
+
     private String gmt_payment;
     /**
      * 通知时间
@@ -52,6 +53,7 @@ public class PayAsyncVo {
      * 通知 ID
      */
     private String notify_id;
+
     private String fund_bill_list;
     /**
      * 通知类型； trade_status_sync
@@ -73,6 +75,7 @@ public class PayAsyncVo {
      * 流水号
      */
     private String trade_no;
+
     private String auth_app_id;
     /**
      * 商家收到的款

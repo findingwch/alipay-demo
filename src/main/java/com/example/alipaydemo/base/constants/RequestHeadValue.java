@@ -1,8 +1,11 @@
 package com.example.alipaydemo.base.constants;
 
+
 /**
- * 测试常量
- * @author yu 2021/7/13.
+ * 请求头值
+ *
+ * @author finding
+ * @date 2024/04/24
  */
 public class RequestHeadValue {
     /**

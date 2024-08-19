@@ -3,10 +3,12 @@ import org.springframework.util.StringUtils;
 
 import java.sql.SQLException;
 
+
 /**
- * SQL过滤
+ * sqlfilter
  *
- * @author Mark sunlightcs@gmail.com
+ * @author finding
+ * @date 2024/04/23
  */
 public class SQLFilter {
 
@@ -32,11 +34,11 @@ public class SQLFilter {
 
         //判断是否包含非法字符
         for(String keyword : keywords){
-            if(str.indexOf(keyword) != -1){
+            if (str.contains(keyword)) {
                 try {
                     throw new SQLException();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
+                } catch (SQLException exception) {
+                    exception.printStackTrace();
                 }
             }
         }

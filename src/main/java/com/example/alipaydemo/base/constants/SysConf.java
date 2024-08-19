@@ -1,5 +1,11 @@
 package com.example.alipaydemo.base.constants;
 
+/**
+ * 系统会议
+ *
+ * @author finding
+ * @date 2024/04/24
+ */
 public class SysConf {
 
     public static final String ADMIN_ID = "admin_id";

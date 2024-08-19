@@ -7,6 +7,7 @@ package com.example.alipaydemo.base.utils;
  * @date 2024/04/02
  */
 public class Constant {
+
 	/** 超级管理员ID */
 	public static final int SUPER_ADMIN = 1;
     /**
@@ -20,22 +21,19 @@ public class Constant {
     /**
      * 排序字段
      */
-    public static final String ORDER_FIELD = "sidx";
+    public static final String ORDER_FIELD = "orderField";
     /**
      * 排序方式
      */
-    public static final String ORDER = "order";
+    public static final String ORDER = "orderType";
+
+
     /**
-     *  升序
+     * 菜单类型
+     *
+     * @author finding
+     * @date 2024/04/23
      */
-    public static final String ASC = "asc";
-	/**
-	 * 菜单类型
-	 * 
-	 * @author chenshun
-	 * @email sunlightcs@gmail.com
-	 * @date 2016年11月15日 下午1:24:29
-	 */
     public enum MenuType {
         /**
          * 目录
@@ -60,13 +58,13 @@ public class Constant {
             return value;
         }
     }
-    
+
+
     /**
      * 定时任务状态
-     * 
-     * @author chenshun
-     * @email sunlightcs@gmail.com
-     * @date 2016年12月3日 上午12:07:22
+     *
+     * @author finding
+     * @date 2024/04/23
      */
     public enum ScheduleStatus {
         /**
@@ -91,6 +89,9 @@ public class Constant {
 
     /**
      * 云服务商
+     *
+     * @author finding
+     * @date 2024/04/23
      */
     public enum CloudService {
         /**

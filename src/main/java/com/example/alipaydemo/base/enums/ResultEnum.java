@@ -83,8 +83,7 @@ public enum ResultEnum implements BaseEnum {
 
     SYSTEM_UP_ERROR("500", "系统更新中，请稍后尝试！"),
 
-    test("11", "11")
-    ;
+    test("11", "11");
 
     ResultEnum(String code, String value) {
         this.code = code;

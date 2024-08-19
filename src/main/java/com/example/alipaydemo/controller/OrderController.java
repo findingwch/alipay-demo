@@ -61,7 +61,7 @@ public class OrderController {
 
         orderService.createOrderWithGoods(goodsId,num);
 
-        return Result.success();
+        return Result.ok();
     }
 
 
@@ -79,7 +79,7 @@ public class OrderController {
                                @RequestParam(value = "pageSize", required = false) Long pageSize,
                                @RequestBody(required = false) Order order){
 
-        return Result.success(orderService.getPage(pageNum,pageSize,order));
+        return Result.ok(orderService.getPage(pageNum,pageSize,order));
     }
 
 
@@ -113,7 +113,7 @@ public class OrderController {
             }
         }
 
-        return Result.success();
+        return Result.ok();
     }
 
 
